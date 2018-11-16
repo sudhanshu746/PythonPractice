@@ -1,0 +1,106 @@
+
+
+
+def function(s=""):
+    msg=''
+    for i in sorted(set(s)):
+            msg += s + str(s.count(i));
+    return msg;
+
+	
+
+	
+def function(st=""):
+	msg=''
+	for i in sorted(set(st)):
+		msg += s + str(st.count(i));
+	return msg;
+	
+
+# python program to find minimum
+# cost to make a palindrome.
+
+# Function to return cost
+def cost(st):
+    
+    # length of string
+    l = len(st)     
+    
+    # Iterate from both sides
+    # of string. If not equal,
+    # a cost will be there
+    res = 0
+    j = l - 1
+    i = 0
+    while(i < j):         
+        if (st[i] != st[j]):
+            res += (min(ord(st[i]), 
+                    ord(st[j])) - 
+                     ord('a') + 1)
+            
+        i = i + 1
+        j = j - 1
+        
+    return res
+
+# Driver code
+st = "abcdef";
+print(cost(st))
+
+
+Share your reasoning: make sure you can talk about your solution; you will probably be asked to explain them. Engineering is all about tradeoffs, so be prepared to discuss them.
+Find and fix the bugs by yourself: don't wait for the interviewer to find them for you.
+
+5:07 
+
+def function(st=""):
+    msg=''
+    for i in sorted(set(st)):
+            msg += s + str(st.count(i))
+    return msg;
+
+def function(st=""):
+    chr,dig=[],[]
+    for e in st:
+            if (e.isalpha()): chr.append(e)
+            else: dig.append(e)
+    for i in range(0,len(chr)):
+            print(chr[i] * int(dig[i]))
+			
+			
+def isPrime(n=0):
+    for i in range(2,n-1):
+            if( n%i == 0):
+                    return False
+    else: return True;
+def printPrime(k=2):
+    for i in range(2,k-1):
+            if isPrime(i): print(i)
+
+			
+SELECT tbl.SALARY FROM ( 
+SELECT SALARY,DENSE_RANK() OVER (PARTITION BY `DEPT` ORDER BY SALARY DESC) rnk FROM TABLE) tbl 
+WHERE tbl.rnk <= 5; 
+or 
+SELECT TBL.SALARY FROM TABLE1 TBL WHERE SALARY IN 
+(SELECT TOP 5 SALARY FROM TABLE1 WHERE DEPT = TBL.DEPT ORDER BY SALARY DESC)
+ORDER BY DEPT,SALARY DESC;
+
+
+TABLE(id,amount,)
+
+SET @sum=0
+
+SELECT id, amount,(@sum:=@sum + amount ) as concurrent_sum from table1;
+
+or 
+select id, amount, LAG(amount,1) over (ORDER BY amount) as concurrent_sum from table1;
+
+
+			
+	
+			
+			
+
+
+

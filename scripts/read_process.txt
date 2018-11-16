@@ -1,0 +1,83 @@
+Preffered : 
+Distributed Messaging: e.g. Kafka and Zookeeper
+Batch processing frameworks: e.g. Spark
+Real time processing frameworks: e.g. Spark Streaming, Storm, Flink
+
+
+-- Kafka Book - Today 
+Zookeeper
+
+-- Spark Steaming - 1st Dec
+	- Spark Streaming  1st half 
+	- SparkSQL
+	- Spark Streaming - application build
+-- Storm & Flink
+--streamanalytics,airflow,
+-- Sql typical Queries 
+-- RestFul API 
+-- 
+
+
+What is Parquet ? Parquet vs Avro  -- Working
+
+How it is storing data ?
+- InputSplit Algorithm 
+ a split could be <input-file-path, start, offset>
+ ----
+ if (codec != null) {
+   in = new LineReader(codec.createInputStream(fileIn), job);
+   end = Long.MAX_VALUE;
+} else {
+   if (start != 0) {
+     skipFirstLine = true;
+     --start;
+     fileIn.seek(start);
+   }
+   in = new LineReader(fileIn, job);
+}
+if (skipFirstLine) {  // skip first line and re-establish "start".
+  start += in.readLine(new Text(), 0,
+                    (int)Math.min((long)Integer.MAX_VALUE, end - start));
+}
+this.pos = start;
+----
+
+DStreams:
+
+	InputDStream : 
+		- DirectKafkaInputStream : a stream of Kafka RDD wherein each RDD corresponds to a kafka partition
+		- FileInputDStream :   Generates RDD from files present present on FS 
+		- ReceiverInputDStream : place a receiver on each node and generates RDDs for incoming Data
+		- QueueInputDStream : Convert scala Queue to DStream
+		- ConstantInputDStream -- (only for testing) repeat same RDD in every batch
+
+	Window function : .window(Seconds(10)), reduceByWindow(a => a.count,60,10)
+	PairDStream : reduceByKeyAndWindow 
+	saveAs : stream.saveAsTextFile, stream.saveAsObjectFile (  RDD.saveAsObjectFile)clicks.saveAsTextFiles("clicks", "txt")
+
+	Steteful operators (mapWithState or updateStateByKey) for Cummulative calculation : 
+
+	----
+	val sc = new SparkContext("local[*]", "Constant Input DStream Demo", new SparkConf())
+	import org.apache.spark.streaming.{ StreamingContext, Seconds }
+	val ssc = new StreamingContext(sc, batchDuration = Seconds(5))
+
+	// Create the RDD
+	val rdd = sc.parallelize(0 to 9)
+
+	// Create constant input dstream with the RDD
+	import org.apache.spark.streaming.dstream.ConstantInputDStream
+	val cis = new ConstantInputDStream(ssc, rdd)
+
+	// Sample stream computation
+	cis.print
+	---
+
+ 
+returns WindowedDStreams
+	
+	
+	70000
+	-10880
+	8560
+	-50560

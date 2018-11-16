@@ -1,0 +1,40 @@
+1. epel 
+2. IPA role FQDN in resolv.conf
+3. firewall -e, shutdown firewall
+service firewalld stop
+systemctl disable firewalld
+
+4. DNS entry   -- W
+5. Shell command for 
+az network vnet update --dns-
+---
+az network vnet update \
+	--name "ansible09-27-17VNET" \
+	--resource-group "demo" \
+	--dns-servers "10.0.0.11"
+---
+
+
+6. No public IP  -- D
+7.Availability set  -- P
+8. IPA_domain required /not
+
+
+	9. Paramters for VM_size MGM and Data -- P
+	10. validate for VM_size  -- P
+
+
+
+root@VA1COG3SERVER01:/root/Sudhanshu/final/BDaaS.tar.bz2
+/root/Sudhanshu/final/BDaaS/BDaaS/bin/ansible/roles/configureMySQL/templates/db_permissions.ddl.j2
+/root/Sudhanshu/final/BDaaS/BDaaS/bin/ansible/roles/ipaClient/tasks/main.yml
+/root/Sudhanshu/final/BDaaS/BDaaS/bin/ansible/roles/ipaServer/tasks/main.yml
+/root/Sudhanshu/final/BDaaS/BDaaS/bin/ansible/roles/ipaServer/templates/resolv.conf.j2
+/root/Sudhanshu/final/BDaaS/BDaaS/bin/ansible/roles/prepareCMServer/tasks/main.yml
+
+
+/root/Sudhanshu/BDaaS/BDaaS/bin/ansible/roles/configureMySQL/templates/db_permissions.ddl.j2 
+/root/Sudhanshu/BDaaS/BDaaS/bin/ansible/roles/ipaClient/tasks/main.yml
+/root/Sudhanshu/BDaaS/BDaaS/bin/ansible/roles/ipaServer/tasks/main.yml
+/root/Sudhanshu/BDaaS/BDaaS/bin/ansible/roles/ipaServer/templates/resolv.conf.j2
+/root/Sudhanshu/BDaaS/BDaaS/bin/ansible/roles/prepareCMServer/tasks/main.yml
