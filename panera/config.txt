@@ -1,0 +1,3 @@
+spark.orders.input  /data/stg/panera_sales_stats_intermed/sales_txn_20151125.pro_sample_noheader.csv
+spark.machinestats.input /user/panera_data/machine_stats_raw/ 
+spark.dynatrace.input /user/panera_data/dynatrace_xml/

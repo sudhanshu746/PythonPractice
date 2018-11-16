@@ -1,0 +1,52 @@
+McKinsey &amp; Company is interested in evaluating:
+1. Problem solving approach
+2. Ability to make realistic assumptions
+3. Calculations i.e. comfort with numbers
+
+Example: What is the revenue of PVR Saket in a week?
+1. What are the sources of revenue
+Example:
+
+a) Ticket Sales
+b) Food and Beverage Sales
+c) Sales from Advertising/Promotion
+ On Screen
+ In theatre i.e. off screen
+
+SELECT SUM(amount) from (
+SELECT txn_amount as amount from ticket_sales 
+UNION ALL 
+SELECT txn_amount as amount from Food_and_Beverage_Sales 
+UNION ALL
+SELECT txn_amount as amount from adv_sales ) 
+
+2. For each one figure out best way to calculate
+Example:
+
+a) Ticket Sales
+
+Assumptions:
+ PVR is a multiplex and has (Assume)
+
+4 screens of approx 100 seats each i.e. 400 seats
+
+ Each hall screen has 5 shows a day
+
+i.e. Max of 400*5 i.e. 2000 Tickets can be sold each day
+ Make realistic assumptions on “OCCUPA” depending on
+
+i. Day of week
+ii. Time of day
+Assume its 70-75%
+Therefore, number of tickets sold= approx 1400 per day
+And in a week number of tickets sold =9800(1400*7) i.e. approx 10,000
+Hence, At RsX(Put a number) per ticket, Ticket sales Revenue=10,000*(Put a number)
+
+This example was just to give you an idea, how to solve such problem solving issues.
+
+Few other examples are:
+1. Number of burgers sold by McDonalds in a day
+2. Litres of petrol sold by X petrol pump in a day
+	
+3. Number of vehicles crossing the toll a day
+4. Number of golf balls in Delhi

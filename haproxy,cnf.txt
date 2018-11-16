@@ -1,0 +1,86 @@
+global
+    # To have these messages end up in /var/log/haproxy.log you will
+    # need to:
+    #
+    # 1) configure syslog to accept network log events.  This is done
+    #    by adding the '-r' option to the SYSLOGD_OPTIONS in
+    #    /etc/sysconfig/syslog
+    #
+    # 2) configure local2 events to go to the /var/log/haproxy.log
+    #   file. A line like the following can be added to
+    #   /etc/sysconfig/syslog
+    #
+    #    local2.*                       /var/log/haproxy.log
+    #
+    log         127.0.0.1 local0
+    log         127.0.0.1 local1 notice
+    chroot      /var/lib/haproxy
+    pidfile     /var/run/haproxy.pid
+    maxconn     10000
+    user        haproxy
+    group       haproxy
+    daemon
+
+    # turn on stats unix socket
+    #stats socket /var/lib/haproxy/stats
+
+#---------------------------------------------------------------------
+# common defaults that all the 'listen' and 'backend' sections will
+# use if not designated in their block
+#
+# You might need to adjust timing values to prevent timeouts.
+#---------------------------------------------------------------------
+defaults
+    mode                    http
+    log                     global
+    option                  httplog
+    option                  dontlognull
+    option http-server-close
+    option forwardfor       except 127.0.0.0/8
+    option                  redispatch
+    retries                 5
+    maxconn                 3000
+    timeout connect 60000ms
+    timeout client 3600000ms
+    timeout server 3600000ms
+#
+# This sets up the admin page for HA Proxy at port 25002.
+#
+listen stats :25002
+    balance
+    mode http
+    stats enable
+    stats auth username:password
+
+# This is the setup for Impala. Impala client connect to load_balancer_host:25003.
+# HAProxy will balance connections among the list of servers listed below.
+# The list of Impalad is listening at port 21000 for beeswax (impala-shell) or original ODBC driver.
+# For JDBC or ODBC version 2.x driver, use port 21050 instead of 21000.
+listen impala :25003
+    mode tcp
+    option tcplog
+    balance leastconn
+
+    server impala1_1 va1cog3data892.bdaas.centurylink.com:21000
+    server impala1_2 va1cog3data893.bdaas.centurylink.com:21000
+    server impala1_3 va1cog3data894.bdaas.centurylink.com:21000
+
+# Setup for Hue or other JDBC-enabled applications.
+# In particular, Hue requires sticky sessions.
+# The application connects to load_balancer_host:21051, and HAProxy balances
+# connections to the associated hosts, where Impala listens for JDBC
+# requests on port 21050.
+listen impalajdbc :21051
+    mode tcp
+    option tcplog
+    balance source
+    server impala2_1 va1cog3data892.bdaas.centurylink.com:21050
+    server impala2_2 va1cog3data893.bdaas.centurylink.com:21050
+    server impala2_3 va1cog3data894.bdaas.centurylink.com:21050
+	
+listen hiveserver2jdbc :22051
+    mode tcp
+    option tcplog
+    balance source
+    server hiveserver2_1 va1cog3mgmt806.bdaas.centurylink.com:10000
+    server hiveserver2_2 va1cog3mgmt806.bdaas.centurylink.com:10000

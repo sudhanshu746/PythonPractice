@@ -1,0 +1,431 @@
+
+
+5. Data Structure : 5 S Ques -- D
+1. BDaaS Azure (Skipped CMGR create server role from  Ansible script (service_provider)
+2. Kafka monitor Data checked both are fine.
+3. Scala videos
+
+4. Test add node
+1. Azure pipeline Scheduling part 
+ 
+ 
+Can we have a tag file indicator for data factory job to start 
+
+-- We can use expressions for Input and Output of pipeline.
+-- Scheduling 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+birst certification and Talend
+
+1. BDaaS HS requirement understanding 
+2. BDaaS HS enviorment testing and setup
+3  Ready Microsoft Azure free account 
+4. Flume config test with two jar -- interceptor and JSONSerde
+5. Return ticket from MP
+
+
+http://52.173.79.133:8080/#/login
+admin / admin  
+Ranjan, Nitesh 2:02 PM: 
+unix user - nitesh
+password - Centurylink@2017 
+Ranjan, Nitesh 2:05 PM: 
+ssh root@localhost -p 2222 
+idontknow 
+
+
+
+
+1. Panera Dev cluster 
+Cluster: Panera old (not dlab) 
+IP: 10.135.97.31
+User: paneradev
+password:
+mar8l3.1
+a1c2e345
+
+hadoop distcp -D ipc.client.fallback-to-simple-auth-allowed=true --skipcrccheck -update  /tmp/abc111
+/data/benchmark_distcp
+>curl -i --negotiate -u paneradev https://ny1dlabmgmt196.bdaas.centurylink.com:50470/jmx?qry=Hadoop:service=NameNode,name=FSNamesystemState
+
+
+Directory:
+/srv/shiny-server/panera/ --Done 
+2. Get ready server for Kafka and Flume 
+3. copy BDaaS code to Azure and trigger to check (shutdown nodes after usage)
+4. Call Anil -- Done ( tomorrow again ) 
+5. Send location of Shoes
+2. 
+ -- pending   
+6. Bike Check
+4. Flume config test with two jar -- interceptor and JSONSerde
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1. Work on AZ CLI script for 1 network subnet, group with all cluster, first mannual	-- 11
+	regularize script parmeters 
+2. Regularize BDaaS code 
+
+
+
+1 --
+VirtualNetwork = VNET 
+Subnet  =  ansibleSubnet
+Public IP Address = None
+Network Security group = ansibleNSG
+
+
+
+
+1. BDaaS Testing on Azure 
+2. JSONserde
+3. Bus seats booked
+4. 
+
+
+
+
+
+
+1. test vnet peering
+2. test Data Disks
+
+https://docs.microsoft.com/en-us/azure/virtual-machines/windows/about-disks-and-vhds
+https://docs.microsoft.com/en-us/azure/storage/common/storage-scalability-targets
+3.  
+
+1. BDaaS testing on Azure
+
+
+
+
+
+
+
+1. AZ module to trigger shell script on each VM -- 15+30
+2. AZ installation and setup on ansible -- 45
+3. Writing and testing AZ script on ans node -- 45
+4. Trigger BDaaS code on azure -- 1:00
+5. Finish Architech module --
+6. Answer Ques of L1-Draft -3:00 -- Pending
+7. Send email for Certification approval -- Done
+
+
+Ad-hoc
+6. Bike check --Done
+7. Check SBI account  -- Done 
+  -- Call SBI manager to remove insureance part @
+8. Check with Mahagun @ -- Done
+9. Skype Interview @4:00 -- Waiting
+10. pre-Email for reimbursement approval -- Done
+---
+1. Answer Ques of L1-Draft -
+2. fill-out L1 required details by EOD
+3. Test BDaaS same code on CLC.
+
+
+
+Part4.
+1. Proposed Employment Address for the Beneficiary
+10  Supervisor's Name
+10.b. Nature of Supervision and Control of the Beneficiary's
+Work
+5a. Start Date (mm/dd/yyyy) -- Not present
+7. Wages Earned Per Year 
+CTLI Mailing Address
+St.Louis,Missouri
+
+
+
+
+
+
+
+1. Commit Parameterized azure script to GitHub
+2. Prepare P1. Sentry and P2. IPA document , test Sentry env
+3. Ready Code for Hive Spring -- Done
+
+
+
+
+1. Check SBI account  
+  -- Call SBI manager to remove insureance part @ -- Mail has been sent 
+  -- Call SBI manager Karkarduma to regularize EMI to 22000
+  -- send pre-installation to Mahagun  -- EMI not deducted from Account
+2. Commit Parameterized azure script to GitHub
+4. Create extertion set Custom script for mounting Disk
+5. Prepare module-1 Az Arc
+3. Prepare P1. Sentry and P2. IPA document , test Sentry env
+
+
+
+1. L1-Draft
+1. Check-in code -- done
+2. Trigger on CLC
+3. Prepare Document BDaaS2.0
+
+1. Upload doc to inszoom 
+
+
+1. aws Test 1 hour
+2. Int 3:00
+2. Prepare data algorithms for interview
+3. Prepare for MCSE Exam 
+
+
+9:50- 11:00
+
+10:00 -- 1:00 [ Done] 
+Appropriatly mapped existing open source knowledge with Microsoft Azure tools
+https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwiypbKQ1JrXAhUO0IMKHajhDwIQFggoMAA&url=https%3A%2F%2Fin.linkedin.com%2Fin%2Fyogeswaran-v-85255039&usg=AOvVaw3wPqhVIhGhTj_D1E0rahcS
+
+
+Cluster Analysis, Demand forecasting, Recommendation system, Regression models.
+Breakdown analysis, Forcasting,
+
+Cognilytics123
+
+
+Plan
+--------- 6/11/17 - 6:00
+
+
+1. BDaaS ADD node feature -- 
+	- Add_node code 
+	- sssd server remediation
+	- add node with Azure
+2. BDaaS Code checkin 
+3. LTA docs 
+
+
+AWS Redshift KAfka streaming--12:30 
+Arun test 
+Databricks -- practice chatbot Day-1
+Guesstimates - 3 
+
+BDaaS : Code Check-in -- 3:30
+Prepare Azure certification -- 12:00  -- Done
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:DescribeVpcs",
+                "ec2:DescribeSubnets",
+                "ec2:DescribeNetworkInterfaces",
+                "ec2:DescribeAddresses",
+                "ec2:AssociateAddress",
+                "ec2:DisassociateAddress",
+                "ec2:CreateNetworkInterface",
+                "ec2:DeleteNetworkInterface",
+                "ec2:ModifyNetworkInterfaceAttribute"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+
+spark-redshift-2.0.1
+hadoop-aws-2.8.2
+aws-java-sdk-1.11.223
+
+org.apache.hadoop:hadoop-aws:2.8.2
+
+
+Ad-hoc
+SBI check account -- Done
+Homes121- Transfer money and send ack 
+Mahagun: Query for prepayments
+Kent RO: call for motor exchange -- Complaint
+---
+
+https://community.cloudera.com/t5/Cloudera-Manager-Installation/cm-api-apply-host-template-command-not-working-properly/m-p/58725#M11635
+
+https://www.linkedin.com/pulse/future-spark-big-data-insights-streaming-deep-cloud-george-anadiotis/?trackingId=xSe%2B7MXPwvfw7LJaYpahWA%3D%3D
+	
+-----------------------------------------------
+  error:  User arn:aws:redshift:us-east-2:352784915116:dbuser:examplecluster/admin is not authorized to assume IAM Role arn:aws:iam::352784915116:role/aws-service-role/redshift.amazonaws.com/AWSServiceRoleForRedshift
+  code:      8001
+  context:   IAM Role = arn:aws:iam::352784915116:role/aws-service-role/redshift.amazonaws.com/AWSServiceRoleForRedshift
+  query:     0
+  location:  xen_aws_credentials_mgr.cpp:230
+  process:   padbmaster [pid=10534]
+  -----------------------------------------------
+
+Tasks 9:30
+---
+1. Fill DS160 form -- 1:00  -- IMP
+1. Spark Machine Learning -- 1:45 - W
+1. Certification   -- NW
+2. BDaaS disable_TLS add node on Azure -- 3:00 - W
+
+Cognilytics123
+2. Udupa meetings  -- 4:00  
+1. prepare for L1 Interview  -- 12:30 
+1. Spark Analysis on Arun blog -- 
+1:00
+Before Lunch 
+Claims submit  IMP
+
+Petition : Monday, 20/11/2017 , By End of Day
+
+CSV - 1 GB - 3028249.166666667 (3M) -- 
+	100 GB - 3 Bn
+7267798
+7267798
+WAC1520251863
+
+
+
+
+
+
+
+
+---------- 21/11 -- 7:30
+Prepare Security Implementation PPT -- 5:00 - 5:20
+Work on Spark ML project -- 5:20 - 6:15 
+Prepare Questions for Document PPT -- 2:45 - 3:45
+prepare Interview -- 12:45 -- 1:45
+Email to Amol to get approval on License  -- Done
+Airtel BillPayment 2158 -- Done 
+Abhijeet Kailash + 10:30 -- Done
+
+
+Pers:
+1. Laptop RAM, go to Nehru place
+2. SS for purse
+
+VPN 
+
+
+
+---------- 23/11 -- 4:30
+
+Validate code -- Done 
+Review Panera-Demo
+GitHub Commit
+Chat with support for 
+
+------------27/11 -- 7:30
+
+arvind@BDAAS.CENTURYLINK.COM
+
+-- Prepare L1 -- 2Q
+-- Prepare Encryption -- Validation steps 1:00
+--Retrospective 1:30
+--Kafka Book 
+-- Prepare L1 -- 5:00
+
+Data encryption is required by a number of different government, financial, and regulatory entities. For example, the healthcare industry has HIPAA regulations, the card payment industry has PCI DSS regulations, and the United States government has FISMA regulations. Having transparent encryption built into HDFS makes it easier for organizations to comply with these regulations. Encryption can also be performed at the application-level, but by integrating it into HDFS, existing applications can operate on encrypted data without changes. This integrated architecture implies stronger encrypted file semantics and better coordination with other HDFS functions.
+
+
+Long --------- 
+Spark Book 
+
+
+
+--- 11/29 8:20
+- prepare outline of IR
+- Create document for sentry validation 
+- 	•	Perform the activity to move data out of encrypted zone. Decrypted data into hdfs folder. Disable HDFS encryption and test. Document the activity. Sudhanshu
+
+
+
+--- 12/12/17 7:00
+
+1. Create Oozie job to share hive file count abd table count 
+2.  
+
+
+
+
+2017-12-12 06:06:23,920 FATAL [IPC Server handler 6 on 24152] org.apache.hadoop.mapred.TaskAttemptListenerImpl: Task: attempt_1512693014961_0128_m_000000_1 - exited : Java heap space
+2017-12-12 06:06:23,920 INFO [IPC Server handler 6 on 24152] org.apache.hadoop.mapred.TaskAttemptListenerImpl: Diagnostics report from attempt_1512693014961_0128_m_000000_1: Error: Java heap space
+
+
+jdbc:hive2://va1cog3mgmt777.bdaas.centurylink.com:10000/micheals
+
+FYI 
+%wf6kOfUskz:$Rph
+
+
+
+I'll send email to Amol in 90 min
+
+
+2. Addition to CurrentVPN Setup, Site-to-Site VPN Documentation
+1. Birst Requirement
+3. Game Plan for GiHub
+
+
++91 172 519 9051
+
+
+'
+
+
+
+
+
+---Email to Mahagun regarding Interest waiver 
+
+1. SBI is providing loan only on 40%-40% ratio, this fact is known to Mahagun employee. Then why you've signed Triparty aggrement with SBI bank ?
+
+2. Whenever Demand raised by Mahahun, I've paid all demands on time before due date. Still why I'm chargable of late payment Interest ?
+
+3. 
+

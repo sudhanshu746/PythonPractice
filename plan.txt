@@ -1,0 +1,51 @@
+PLAN
+
+Need
+
+Office
+1. Push code to github
+1. Kinit 10hrs should be 24 hrs
+2. Mobile backup for cashify 
+3. 
+
+Personal 
+1. Check with Babu | Babu will call me when he'll visit Mahagun | 
+2. check with Udisa |  
+3. Check Water jet with Maunish
+ 
+
+Demand 
+1. Code on Q2 - W20 
+2. Soccer Forecasting 
+2. AWS cert prep
+3. Tensor flow 
+4. Resume preparation  
+
+Desire 
+1. Code on snapshots - 
+- Particle 
+
+
+New Branch consist of :
+- Prev. Generic code from GitLab
+- RHEL7.2 IPA Fix
+- Centrify Express automation
+- User management option in CMGR
+
+
+Tripta@746!^
+Memory utilization on resources on Panera Prod 
+To provide Spark application getting 
+
+
+
+bp number:6000038512
+
+Anil IGL:8630347948
+
+
+neha_su19
+njq214
+
+
+

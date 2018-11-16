@@ -1,0 +1,268 @@
+# check enviorment
+
+
+function exit_if_error {
+if [[ $? -ne 0 ]];then
+exit 1;
+fi
+}
+
+
+echo "Checking Enviorment ..."
+python -c 'import sys; v = sys.version_info; print("The CLI does not support Python versions less than 2.7.") and False if v < (2, 7) else True'
+exit_if_error
+
+python -c 'import sys; print("This script does not support the Python Anaconda environment. ") and False if "conda" in sys.version else True'
+exit_if_error
+
+
+# Parameter Intialization #
+usage() { echo "Usage: $0 [-u <username>] [-p <password>] [-g <Resource Group>] [-m <MGMNT Nodes>] [-d <DATA Nodes>] " 1>&2; exit 1; }
+
+if test "$#" -ne 10; then
+    echo "Illegal number of parameters ..."
+    usage
+fi
+
+while getopts u:g:p:m:d: option
+do
+ case "${option}"
+ in
+ u) USER=${OPTARG};;
+ p) PASSWORD=${OPTARG};;
+ g) RG=${OPTARG};;
+ m) MGMNT=${OPTARG};;
+ d) DATA=${OPTARG};;
+ *) usage ;;
+ esac
+done
+
+
+# Intialization #
+rg_name=${RG}
+region="eastus2"
+addressPrefix_default='10.0.0.0/16'
+subnetPrefix='10.0.0.0/24' # Default
+ipa_static_ip='10.0.0.4' # Default
+number_of_mgmnt_node=${MGMNT}
+number_of_data_node=${DATA}
+vnet_name="BDAAS_DEMO"
+vm_size="Standard_DS14_v2"
+ipa_os_size="Standard_DS2_v2"
+admin_username=${USER}
+admin_password=${PASSWORD}
+os_image="RedHat:RHEL:6.8:latest"
+ipa_os_image="RedHat:RHEL:7.2:latest"
+nsg_name=${rg_name}_NSG
+nsg_rule="SSH"
+vnet_name="${rg_name}_VNET"
+subnet_name="${rg_name}_SUBNET"
+availset_master="${rg_name}_availset_master"
+availset_worker="${rg_name}_availset_worker"
+fault_domain_master_count=3
+fault_domain_worker_count=3
+update_domain_master_count=4
+update_domain_worker_count=4
+sku_type="Premium_LRS"
+storage_account="${rg_name,,}vhdstorageacc"
+os_disk_name="${rg_name,,}-ondisk"
+data_disk_count=2
+data_disk_size_gb=50
+
+#public_ip_name="${rg_name}_PublicIP"
+
+
+
+incr=0
+address_space_exist=$(az network vnet list --query "[?contains(addressSpace.addressPrefixes,'${addressPrefix_default}')]")
+
+while [[ $address_space_exist != "[]" ]];do
+incr=$(expr $incr + 1)
+addressPrefix='10.'${incr}'.0.0/16'
+subnetPrefix='10.'${incr}'.0.0/24'
+ipa_static_ip='10.'${incr}'.0.4'
+address_space_exist=$(az network vnet list --query "[?contains(addressSpace.addressPrefixes,'${addressPrefix}')]")
+done
+
+
+
+## Execution ##
+# Create Resource Group
+az group create --name $rg_name --location $region
+exit_if_error
+
+## create storage account for enabling encryption-At-rest and recommended for unmanaged disks
+az storage account create \
+        --resource-group $rg_name \
+        --name $storage_account \
+        --location $region \
+        --sku ${sku_type} \
+        --kind Storage  \
+    --encryption-services file
+exit_if_error
+
+# Create Availability Sets
+az vm availability-set create \
+        --resource-group $rg_name \
+    --name ${availset_master} \
+        --location  $region \
+        --platform-fault-domain-count $fault_domain_master_count \
+        --platform-update-domain-count $update_domain_master_count \
+        --unmanaged
+exit_if_error
+
+az vm availability-set create \
+        --resource-group $rg_name \
+    --name ${availset_worker} \
+        --location  $region \
+        --platform-fault-domain-count $fault_domain_worker_count \
+        --platform-update-domain-count $update_domain_worker_count \
+        --unmanaged
+exit_if_error
+
+
+az network nsg create \
+        --resource-group $rg_name \
+        --name $nsg_name
+exit_if_error
+
+az network nsg rule create \
+--resource-group $rg_name \
+--nsg-name $nsg_name \
+--name default_allow_ssh \
+--priority 1000 \
+--source-address-prefixes "*" \
+--source-port-ranges "*" \
+--destination-port-ranges 22  \
+--access Allow \
+--protocol Tcp \
+--description "allow ssh"
+exit_if_error
+
+az network vnet create \
+        --resource-group $rg_name \
+        --name $vnet_name \
+        --address-prefix $addressPrefix \
+        --location $region
+exit_if_error
+
+az network vnet subnet create \
+        --resource-group $rg_name \
+        --name $subnet_name \
+        --vnet-name $vnet_name \
+        --address-prefix $subnetPrefix \
+        --network-security-group $nsg_name
+exit_if_error
+
+#az network public-ip create \
+#       --name $public_ip_name \
+#       --resource-group $rg_name \
+#       --allocation-method Dynamic \
+#       --location $region
+#exit_if_error
+
+# Create IPA VM
+vm_name="ipa${rg_name}"
+az vm create \
+--resource-group $rg_name \
+--name $vm_name \
+--admin-username $admin_username \
+--admin-password $admin_password \
+--image $ipa_os_image \
+--size $ipa_os_size \
+--location $region  \
+--availability-set $availset_master \
+--nsg $nsg_name  \
+--subnet $subnet_name \
+--vnet-name $vnet_name \
+--private-ip-address ${ipa_static_ip} \
+--public-ip-address "" \
+--use-unmanaged-disk \
+--storage-account $storage_account \
+--os-disk-name ${vm_name}-${os_disk_name}
+exit_if_error
+
+## Updating VNET with IPA ( Custom DNS )
+az network vnet update \
+        --resource-group $rg_name \
+    --name $vnet_name \
+        --set dhcpOptions.dnsServers="['"${ipa_static_ip}"']"
+exit_if_error
+
+## Create Management servers with Private address only ###
+for m in $(seq 1 $number_of_mgmnt_node)
+do
+vm_name=MGMNT0${m}${rg_name}
+az vm create \
+--resource-group $rg_name \
+--name $vm_name \
+--admin-username $admin_username \
+--admin-password $admin_password \
+--image $os_image \
+--size $vm_size \
+--location $region  \
+--availability-set $availset_master \
+--nsg $nsg_name  \
+--subnet $subnet_name \
+--vnet-name $vnet_name \
+--public-ip-address "" \
+--use-unmanaged-disk \
+--storage-account $storage_account \
+--os-disk-name ${vm_name}-${os_disk_name}
+exit_if_error
+
+## Create Data servers with Private address only ###
+for data in $(seq 0 $data_disk_count)
+do
+az vm unmanaged-disk attach \
+--resource-group $rg_name \
+--vm-name $vm_name \
+--caching ReadWrite \
+--name "${vm_name}-data0${data}" \
+--new \
+--size-gb $data_disk_size_gb
+exit_if_error
+
+done # internal loop
+done # outer loop
+
+for d in $(seq 1 $number_of_data_node)
+do
+vm_name=DATA0${d}${rg_name}
+az vm create \
+--resource-group $rg_name \
+--name $vm_name \
+--admin-username $admin_username \
+--admin-password $admin_password \
+--image $os_image \
+--size $vm_size \
+--location $region  \
+--availability-set $availset_worker \
+--nsg $nsg_name  \
+--subnet $subnet_name \
+--vnet-name $vnet_name \
+--public-ip-address "" \
+--use-unmanaged-disk \
+--storage-account $storage_account \
+--os-disk-name ${vm_name}-${os_disk_name}
+exit_if_error
+
+for data in $(seq 1 $data_disk_count)
+do
+az vm unmanaged-disk attach \
+--resource-group $rg_name \
+--vm-name $vm_name \
+--caching ReadWrite \
+--name "${vm_name}-data0${data}" \
+--new \
+--size-gb $data_disk_size_gb
+exit_if_error
+
+done # internal loop
+done
+
+# Restarting VMs for allocating data disks
+az vm restart --ids $(az vm list --resource-group $rg_name --query "[].id" -o tsv)
+exit_if_error
+
+az vm list-ip-addresses -g $rg_name --output table

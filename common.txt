@@ -1,0 +1,93 @@
+10.85.172.15
+
+UAN 100795770852
+pass : cwmSpl#$&173
+CenturyLink(CTL) partnered with Cloudera has developed a Bare Metal offering as IaaS/PaaS for enterprise customers for end-to-end service. CTL’s sister concern CenturyLink Cloud(CLC) is the infrastructure partner. From the designing of the infrastructure, up till managed service, all are provided by BDaaS team. The deployment platform is developed using Python, Ansible and Cloudera Manager API. Participated in designing, developing the automated deployment of the cluster, troubleshooting deployment product, leading managed service team in offshore.
+
+Azure : sudhanshu.cloud9
+
+ITR
+Tripta Sharma : CBHPK9594F
+DOB: 18/02/1963
+Pass: Tripta@321
+
+Papa : ADSPS2296R
+DOB : 01/07/1959
+pass: Tripta@746	
+SBIN0000676
+
+
+meeting ID 295-163-3337
+https://clarityprod:8443/niku/nu#action:homeActionId 
+
+
+
+hadoop jar /path/search-mr-job.jar org.apache.solr.hadoop.HdfsFindTool -find /hadoop-dir/ -newermt 2010-10-06! -newermt 2017-10-08
+
+
+sudhanshu.sharma@centurylink.com
+
+
+wget  http://central.maven.org/maven2/org/json/json/20170516/json-20170516.jar
+-C /dir/json-20170516.jar:CustomInterceptor.jar
+
+Scala
+---
+https://scastie.scala-lang.org/sudhanshu746/UFhoqBvFQSmjTx1QuszW1Q/1
+Binary Search
+https://scalafiddle.io/sf/JfAY0Y3/18
+// Start writing your ScalaFiddle code here
+
+// Count 10
+// P3 Find Kth element in list
+
+object day1 {
+  def kth[A](index: Int,ls: List[A]):A = {
+    if(ls.isEmpty) throw new NoSuchElementException
+    else ls(index)
+  }
+  //   Linear Search
+  def findVal[A](v:A,ls: List[A]):Boolean = {
+    if(ls.isEmpty) throw new NoSuchElementException
+    return ls.exists(x => x == v)
+  }
+  def findValIndex[A](v:A,ls: List[A]):Unit = {
+    if(ls.isEmpty) throw new NoSuchElementException
+    if(ls.exists(x => x == v))  ls.indexOf(v)
+  }
+  def findAllIndex[A](v: A,ls:List[A]):List[Int] =  {
+    ls.zipWithIndex.filter(_._1 == v).map(_._2)
+  }
+  //  Binary Search
+  def findB[A](v: A,ls: Array[A]):Int = {
+    var mid = (1 + ls.length/2).toInt
+    for (x <- 0 to mid) {
+      if(ls(x) == v) return x;
+    }
+     for (y <- (mid to ls.length).reverse) {
+      if(ls(y) == v) return y;
+    }
+  }
+}
+
+val res = day1.findAllIndex(2,List(1,2,3,4,4))
+
+println(res)
+
+CCA
+----
+http://arun-teaches-u-tech.blogspot.com/p/cca-175-prep-problem-scenario-1.html
+
+Hi Julie,
+
+Thanks for updating me !!
+I'm looking forward to your decision.
+
+Kind regards,
+Sudhanshu Sharma	
+
+I'm looking forward to hearing from you.
+
+
+codeword : qw12
+Passphase Ashu 123
